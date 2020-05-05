@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:11.1
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: pgdb
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
