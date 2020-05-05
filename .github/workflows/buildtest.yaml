@@ -1,0 +1,28 @@
+name: Run Tests
+
+on:
+  repository_dispatch:
+    types : [run_test_on_demand]
+  pull_request:
+    branches:
+      - master-final
+  push:
+    branches:
+      - master-final
+      - feature/*
+      - fix/*
+      - features/*
+      - bug/*
+ 
+jobs:
+  setup:
+    name: Run tests on push
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      uses: docker://docker/compose:1.22.0
+      run: |
+        ./run_tests.sh
