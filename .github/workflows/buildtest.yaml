@@ -28,4 +28,4 @@ jobs:
         args: build --no-cache
     - name: Run tests
       run: |
-        ./run_tests.sh
+        bash run_tests.sh
