@@ -21,8 +21,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Run tests
+    - name: Build
       uses: docker://docker/compose:1.22.0
+      with:
+        args: build --no-cache
+    - name: Run tests
       run: |
         ./run_tests.sh
